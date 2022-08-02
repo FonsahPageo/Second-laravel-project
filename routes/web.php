@@ -15,8 +15,34 @@ use App\Http\Controllers\ProjectsController; // always add to the route of your 
 |
 */
 
-// Route::get('/', function (){
+// Route::get('/', function(){
 //     return view('welcome');
 // });
 
-Route::get('/projects', [ProjectsController::class, 'index']);
+Route::get('/', [ProjectsController::class, 'index']);
+
+/*
+    GET /projects (index)
+    GET /projects/create (create)
+    GET /projects/1 (show)
+    POST /projects (store)
+    GET /projects/1/edit (edit)
+    PATCH /projects/1 (update)
+    DELETE   /projects/1 (destroy)
+*/
+
+Route::resource('projects', 'ProjectsController');
+
+// Route::get('/projects', [ProjectsController::class, 'index']);
+
+// Route::get('/projects/create', [ProjectsController::class, 'create']);
+
+// Route::get('/projects/{project}', [ProjectsController::class, 'show']);
+
+// Route::post('/projects', [ProjectsController::class, 'store']);
+
+// Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit']);
+
+// Route::patch('/projects/{project}', [ProjectsController::class, 'update']);
+
+// Route::delete('/projects/{project}', [ProjectsController::class, 'destroy']);
