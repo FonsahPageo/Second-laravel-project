@@ -31,7 +31,7 @@ Route::get('/', [ProjectsController::class, 'index']);
     DELETE   /projects/1 (destroy)
 */
 
-Route::resource('projects', 'ProjectsController');
+Route::resource('projects', ProjectsController::class);
 
 // Route::get('/projects', [ProjectsController::class, 'index']);
 

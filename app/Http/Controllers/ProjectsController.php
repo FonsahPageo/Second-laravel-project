@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class ProjectsController extends Controller
 {
@@ -17,20 +18,8 @@ class ProjectsController extends Controller
     public function create (){
         return view('projects.create');
     }
-
+    
     public function show (){
-        
-    }
-
-    public function edit (){
-        
-    }
-
-    public function update (){
-        
-    }
-
-    public function destroy (){
         
     }
 
@@ -42,8 +31,27 @@ class ProjectsController extends Controller
         $project -> save();
         return redirect('/projects');
 
-        return request()->all();
     }
+
+    public function edit ($id){ 
+        $project = Project::find($id);
+        return view('projects.edit', compact('project'));
+    }
+
+    public function update ($id){
+        $project = Project::find($id);
+        $project -> title = request('title');
+        $project -> description = request('description');
+        $project -> save();
+
+        return redirect('/projects');
+    }
+
+    public function destroy (){
+        
+    }
+
+   
 
     
 
