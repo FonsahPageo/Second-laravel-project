@@ -9,28 +9,47 @@
 </head>
 
 <body>
-    <h1>Create a New Project</h1>
+    @extends('layout')
 
-    <form method="POST" action="/projects">
+    @section('content')
+
+    <form method="POST" action="/projects" style="margin: 2em;">
+        <h1 class="title">Create a New Project</h1>
 
         {{ csrf_field() }}
 
-        <p>
-            <div>
-                <input type="text" name="title" placeholder="Project Title">
+        <div class="field">
+            <label for="title" class="label">Project Title</label>
+            <div class="control">
+                <input type="text" name="title" class="input {{ $errors -> has('title') ? 'is-danger' : '' }}" style="padding: 2px;" value="{{ old('title') }}">
             </div>
-        </p>
-
-        <p>
-            <div>
-                <textarea name="description" placeholder="Project Description"></textarea>
-            </div>
-        </p>
-
-        <div>
-            <button type="submit">Create Project</button>
         </div>
+
+        <div class="field">
+            <label for="description" class="label">Project Description</label>
+            <div class="control">
+                <textarea name="description" class="textarea {{ $errors -> has('description') ? 'is-danger' : '' }}" style="padding: 2px;">{{ old('description') }}</textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Create Project</button>
+            </div>
+        </div>
+
+        @if ($errors -> any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach($errors -> all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
+
+    @endsection
 </body>
 
 </html>
