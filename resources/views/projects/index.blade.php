@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects</title>
     <style>
-        body ul, body h1{
+        body ul,
+        body h1 {
             margin: 2em;
         }
     </style>
 </head>
 
-<body> 
+<body>
     @extends('layout')
-    
+
     <h1>Projects</h1>
     <ul>
         @foreach ($projects as $project)
@@ -26,6 +27,16 @@
         </li>
         @endforeach
     </ul>
+
+    <div class="field" style="margin: 2em;">
+
+        <div class="control">
+            <button type="submit" class="button"><a href="/projects/create">Create Project</a>
+            </button>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
