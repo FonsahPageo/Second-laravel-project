@@ -3,7 +3,7 @@
 @section('content')
     <h1 class = "title">Edit Project</h1>
 
-    <form method="POST" action="/projects/{{ $project -> id }}" style="margin-bottom: 1em;">
+    <form method="POST" action="/projects/{{ $project -> id }}" style="margin: 1em;">
         {{ method_field('PATCH') }} <!-- make laravel to do a PATCH request as POST-->
         {{ csrf_field() }} <!-- include to provide extra protection-->
 
@@ -33,20 +33,20 @@
             </div>
             
         </div>
+        
+    </form>
 
-        <form method="POST" action="/projects/{{ $project -> id }}">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
+    <form method="POST" action="/projects/{{ $project -> id }}">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
 
         <div class="field">
 
             <div class="control">
                 <button type="submit" class="button">Delete Project</button>
             </div>
-            
+                
         </div>
-
-        </form>
 
     </form>
 @endsection

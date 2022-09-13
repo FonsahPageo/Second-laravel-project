@@ -13,7 +13,7 @@
 
     @section('content')
 
-    <form method="POST" action="/projects" style="margin: 2em;">
+    <form method="POST" action="/projects">
         <h1 class="title">Create a New Project</h1>
 
         {{ csrf_field() }}

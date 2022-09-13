@@ -15,24 +15,22 @@ class ProjectsController extends Controller
         return view('projects.index', compact('projects'));
     }
 
+    // public function show ($id){
+        public function show (Project $project){
+            // $project = Project::findOrFail($id);
+            return view('projects.show', compact('project'));
+        }
+
     public function create (){
         return view('projects.create');
     }
 
-    // public function show ($id){
-    public function show (Project $project){
-        // $project = Project::findOrFail($id);
-        return view('projects.show', compact('project'));
-    }
-
     public function store(){
-        $attributes = request() -> validate([
+       Project::create(request() -> validate([
             'title' => ['required', 'min: 3'],
             'description' => ['required', 'min: 3']
-        ]);
+        ]));
         
-        Project::create($attributes);
-
         return redirect('/projects');
 
     }
@@ -45,7 +43,7 @@ class ProjectsController extends Controller
         $project -> update(request(['title', 'description']));
         // $project -> title = request('title');
         // $project -> description = request('description');
-        $project -> save();
+        // $project -> save();
 
         return redirect('/projects');
     }
