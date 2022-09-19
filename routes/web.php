@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProjectsController; // always add to the route of your controllers
 
+use App\Http\Controllers\ProjectTasksController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::get('/', [ProjectsController::class, 'index']);
 */
 
 Route::resource('projects', ProjectsController::class);
+
+Route::post('/projects/{project}/tasks', [ProjectTasksController::class, 'store']);
+
+Route::patch('/tasks/{task}', [ProjectTasksController::class, 'update']);
 
 // Route::get('/projects', [ProjectsController::class, 'index']);
 
