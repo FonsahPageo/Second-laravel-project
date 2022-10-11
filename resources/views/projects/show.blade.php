@@ -1,6 +1,14 @@
 @extends('layout')
 
 @section('content')
+
+<div class="field">
+    <div class="control">
+        <button type="submit" class="button"><a href="/projects">All Projects</a>
+        </button>
+    </div>
+</div>
+
 <h1 class="title">{{ $project -> title }}</h1>
 <div class="content">{{ $project -> description }}</div>
 
